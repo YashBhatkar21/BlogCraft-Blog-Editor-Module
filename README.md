@@ -20,4 +20,5 @@ If you want to see the editor in action, check out create.html or edit.html and 
 Note: Before running the project, set your own MySQL username and password in src/main/resources/application.properties:
 
 spring.datasource.username=your_mysql_username
+
 spring.datasource.password=your_mysql_password
