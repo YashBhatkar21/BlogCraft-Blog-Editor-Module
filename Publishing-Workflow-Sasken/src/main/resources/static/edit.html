@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Edit Draft - BlogCraft</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-100 font-sans">
+    <!-- Header -->
+    <header
+      class="flex justify-between items-center px-10 py-4 bg-white shadow-md"
+    >
+      <div class="flex items-center gap-2 text-xl font-bold text-blue-700">
+        <svg class="w-6 h-6 fill-current" viewBox="0 0 48 48">
+          <path d="M6 6H42L36 24L42 42H6L12 24L6 6Z" />
+        </svg>
+        BlogCraft
+      </div>
+      <nav class="flex gap-6 text-sm font-medium">
+        <a href="index.html" class="hover:text-blue-500">Home</a>
+        <a href="create.html" class="hover:text-blue-500">Create</a>
+        <a href="drafts.html" class="hover:text-blue-500">Drafts</a>
+      </nav>
+      <script defer src="edit.js"></script>
+    </header>
+
+    <!-- Edit Form -->
+    <main class="max-w-4xl mx-auto p-6 mt-6 bg-white rounded-xl shadow">
+      <div class="mb-4">
+        <label for="author" class="block font-semibold mb-1">Author</label>
+        <select id="author" class="w-full p-3 border rounded-lg">
+          <option value="1">Sophia Carter</option>
+          <option value="2">John Doe</option>
+        </select>
+      </div>
+
+      <h1 class="text-2xl font-bold mb-6">Edit Blog Draft</h1>
+
+      <form id="editForm">
+        <input type="hidden" id="postId" />
+
+        <div class="mb-4">
+          <label for="title" class="block font-semibold mb-1">Title</label>
+          <input
+            type="text"
+            id="title"
+            required
+            class="w-full p-3 border rounded-lg"
+          />
+        </div>
+
+        <div class="mb-4">
+          <label for="content" class="block font-semibold mb-1">Content</label>
+          <textarea
+            id="content"
+            rows="10"
+            required
+            class="w-full p-3 border rounded-lg resize-none"
+          ></textarea>
+        </div>
+
+        <div class="flex justify-between gap-4">
+          <button
+            type="submit"
+            class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-bold"
+          >
+            Update Draft
+          </button>
+        </div>
+        <div class="flex justify-between gap-4 mt-6">
+          <button
+            type="button"
+            onclick="updateDraft('DRAFT')"
+            class="bg-gray-300 hover:bg-gray-400 text-black px-6 py-2 rounded-lg font-bold"
+          >
+            Save Draft
+          </button>
+          <button
+            type="button"
+            onclick="updateDraft('REVIEW')"
+            class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-bold"
+          >
+            Save & Send for Review
+          </button>
+        </div>
+      </form>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>System Monitor - BlogCraft</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+      body { font-family: 'Inter', sans-serif; }
+      .gradient-bg { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+      .card-hover { transition: all 0.3s ease; }
+      .card-hover:hover { transform: translateY(-2px); box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1); }
+    </style>
+  </head>
+  <body class="bg-gradient-to-br from-gray-50 to-gray-100 min-h-screen">
+    <!-- Header -->
+    <header class="bg-white/80 backdrop-blur-md border-b border-gray-200 sticky top-0 z-50">
+      <div class="max-w-7xl mx-auto px-6 py-4">
+        <div class="flex justify-between items-center">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl flex items-center justify-center">
+              <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+              </svg>
+            </div>
+            <span class="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+              BlogCraft
+            </span>
+          </div>
+          <nav class="hidden md:flex gap-8 text-sm font-medium">
+            <a href="index.html" class="text-gray-700 hover:text-blue-600 transition-colors duration-200">Home</a>
+            <a href="create.html" class="text-gray-700 hover:text-blue-600 transition-colors duration-200">Create Post</a>
+            <a href="drafts.html" class="text-gray-700 hover:text-blue-600 transition-colors duration-200">Drafts</a>
+            <a href="dashboard.html" class="text-gray-700 hover:text-blue-600 transition-colors duration-200">Dashboard</a>
+            <a href="posts.html" class="text-gray-700 hover:text-blue-600 transition-colors duration-200">All Posts</a>
+            <a href="review.html" class="text-gray-700 hover:text-blue-600 transition-colors duration-200">Review Panel</a>
+            <a href="monitor.html" class="text-blue-600 font-semibold">Monitor</a>
+          </nav>
+          <div class="md:hidden">
+            <button class="text-gray-700">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Monitor Content -->
+    <main class="max-w-7xl mx-auto px-6 py-12">
+      <!-- Header -->
+      <div class="text-center mb-12">
+        <div class="flex items-center justify-center gap-3 mb-4">
+          <div class="w-12 h-12 bg-gradient-to-r from-green-600 to-emerald-600 rounded-xl flex items-center justify-center">
+            <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+            </svg>
+          </div>
+          <h1 class="text-4xl font-bold text-gray-900">System Monitor</h1>
+        </div>
+        <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+          Monitor application health, performance metrics, and system statistics in real-time.
+        </p>
+      </div>
+
+      <!-- System Health -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
+              <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+            </div>
+            <h3 class="text-lg font-semibold text-gray-900">System Health</h3>
+          </div>
+          <div id="system-health" class="space-y-2">
+            <div class="flex justify-between items-center">
+              <span class="text-gray-600">Status:</span>
+              <span id="health-status" class="px-2 py-1 rounded-full text-xs font-medium">Loading...</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-gray-600">Database:</span>
+              <span id="db-status" class="text-sm">Loading...</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-gray-600">Service:</span>
+              <span id="service-status" class="text-sm">Loading...</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+              <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+              </svg>
+            </div>
+            <h3 class="text-lg font-semibold text-gray-900">Performance</h3>
+          </div>
+          <div id="performance-metrics" class="space-y-2">
+            <div class="flex justify-between items-center">
+              <span class="text-gray-600">Uptime:</span>
+              <span id="uptime" class="text-sm">Loading...</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-gray-600">Memory:</span>
+              <span id="memory" class="text-sm">Loading...</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-gray-600">CPU:</span>
+              <span id="cpu" class="text-sm">Loading...</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Blog Statistics -->
+      <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden mb-8">
+        <div class="bg-gradient-to-r from-purple-500 to-pink-500 px-8 py-6">
+          <div class="flex items-center gap-3">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+            </svg>
+            <h2 class="text-xl font-bold text-white">Blog Statistics</h2>
+          </div>
+        </div>
+        
+        <div class="p-8">
+          <div class="grid grid-cols-2 md:grid-cols-5 gap-6" id="blog-stats">
+            <div class="text-center">
+              <div class="text-3xl font-bold text-blue-600 mb-2" id="total-posts">-</div>
+              <div class="text-sm text-gray-600">Total Posts</div>
+            </div>
+            <div class="text-center">
+              <div class="text-3xl font-bold text-yellow-600 mb-2" id="draft-posts">-</div>
+              <div class="text-sm text-gray-600">Drafts</div>
+            </div>
+            <div class="text-center">
+              <div class="text-3xl font-bold text-orange-600 mb-2" id="review-posts">-</div>
+              <div class="text-sm text-gray-600">In Review</div>
+            </div>
+            <div class="text-center">
+              <div class="text-3xl font-bold text-green-600 mb-2" id="approved-posts">-</div>
+              <div class="text-sm text-gray-600">Approved</div>
+            </div>
+            <div class="text-center">
+              <div class="text-3xl font-bold text-purple-600 mb-2" id="published-posts">-</div>
+              <div class="text-sm text-gray-600">Published</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Actuator Endpoints -->
+      <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+        <div class="bg-gradient-to-r from-gray-600 to-gray-700 px-8 py-6">
+          <div class="flex items-center gap-3">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+            </svg>
+            <h2 class="text-xl font-bold text-white">Available Endpoints</h2>
+          </div>
+        </div>
+        
+        <div class="p-8">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <a href="/actuator/health" target="_blank" class="block p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
+              <div class="flex items-center gap-3">
+                <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+                <span class="font-medium">/actuator/health</span>
+              </div>
+              <p class="text-sm text-gray-600 mt-1">System health status</p>
+            </a>
+            
+            <a href="/actuator/info" target="_blank" class="block p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
+              <div class="flex items-center gap-3">
+                <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+                <span class="font-medium">/actuator/info</span>
+              </div>
+              <p class="text-sm text-gray-600 mt-1">Application information</p>
+            </a>
+            
+            <a href="/actuator/metrics" target="_blank" class="block p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
+              <div class="flex items-center gap-3">
+                <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+                </svg>
+                <span class="font-medium">/actuator/metrics</span>
+              </div>
+              <p class="text-sm text-gray-600 mt-1">Performance metrics</p>
+            </a>
+            
+            <a href="/actuator/blogcraft/stats" target="_blank" class="block p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
+              <div class="flex items-center gap-3">
+                <svg class="w-5 h-5 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                </svg>
+                <span class="font-medium">/actuator/blogcraft/stats</span>
+              </div>
+              <p class="text-sm text-gray-600 mt-1">Blog statistics</p>
+            </a>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      // Load system health
+      async function loadSystemHealth() {
+        try {
+          const response = await fetch('/actuator/blogcraft/health');
+          const health = await response.json();
+          
+          const statusElement = document.getElementById('health-status');
+          const dbElement = document.getElementById('db-status');
+          const serviceElement = document.getElementById('service-status');
+          
+          if (health.status === 'UP') {
+            statusElement.textContent = 'Healthy';
+            statusElement.className = 'px-2 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800';
+            dbElement.textContent = 'Connected';
+            serviceElement.textContent = health.service || 'BlogCraft Publishing Workflow';
+          } else {
+            statusElement.textContent = 'Unhealthy';
+            statusElement.className = 'px-2 py-1 rounded-full text-xs font-medium bg-red-100 text-red-800';
+            dbElement.textContent = 'Disconnected';
+            serviceElement.textContent = 'Error';
+          }
+        } catch (error) {
+          console.error('Error loading health:', error);
+        }
+      }
+
+      // Load blog statistics
+      async function loadBlogStats() {
+        try {
+          const response = await fetch('/actuator/blogcraft/stats');
+          const stats = await response.json();
+          
+          document.getElementById('total-posts').textContent = stats.totalPosts || 0;
+          document.getElementById('draft-posts').textContent = stats.draftPosts || 0;
+          document.getElementById('review-posts').textContent = stats.reviewPosts || 0;
+          document.getElementById('approved-posts').textContent = stats.approvedPosts || 0;
+          document.getElementById('published-posts').textContent = stats.publishedPosts || 0;
+        } catch (error) {
+          console.error('Error loading stats:', error);
+        }
+      }
+
+      // Load performance metrics
+      async function loadPerformanceMetrics() {
+        try {
+          const response = await fetch('/actuator/metrics');
+          const metrics = await response.json();
+          
+          // Extract relevant metrics
+          const uptime = metrics.names.find(name => name.includes('process.uptime'));
+          const memory = metrics.names.find(name => name.includes('jvm.memory.used'));
+          const cpu = metrics.names.find(name => name.includes('process.cpu.usage'));
+          
+          document.getElementById('uptime').textContent = uptime ? 'Available' : 'N/A';
+          document.getElementById('memory').textContent = memory ? 'Available' : 'N/A';
+          document.getElementById('cpu').textContent = cpu ? 'Available' : 'N/A';
+        } catch (error) {
+          console.error('Error loading metrics:', error);
+        }
+      }
+
+      // Auto-refresh every 30 seconds
+      function startAutoRefresh() {
+        setInterval(() => {
+          loadSystemHealth();
+          loadBlogStats();
+          loadPerformanceMetrics();
+        }, 30000);
+      }
+
+      // Initialize on page load
+      window.onload = function() {
+        loadSystemHealth();
+        loadBlogStats();
+        loadPerformanceMetrics();
+        startAutoRefresh();
+      };
+    </script>
+  </body>
+</html> 
