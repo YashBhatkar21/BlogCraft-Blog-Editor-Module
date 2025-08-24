@@ -1,173 +1,259 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>BlogCraft Home</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlogCraft - Professional Blog Publishing Platform</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-      body { font-family: 'Inter', sans-serif; }
-      .gradient-bg { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
-      .card-hover { transition: all 0.3s ease; }
-      .card-hover:hover { transform: translateY(-4px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); }
+        body { font-family: 'Inter', sans-serif; }
+        .gradient-bg { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .feature-card { transition: all 0.3s; }
+        .feature-card:hover { transform: translateY(-5px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1); }
     </style>
-  </head>
-  <body class="bg-gradient-to-br from-gray-50 to-gray-100 min-h-screen">
+</head>
+<body class="bg-gradient-to-br from-gray-50 to-gray-100 min-h-screen">
     <!-- Header -->
     <header class="bg-white/80 backdrop-blur-md border-b border-gray-200 sticky top-0 z-50">
-      <div class="max-w-7xl mx-auto px-6 py-4">
-        <div class="flex justify-between items-center">
-          <div class="flex items-center gap-3">
-            <div class="w-10 h-10 bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl flex items-center justify-center">
-              <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-              </svg>
+        <div class="max-w-7xl mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl flex items-center justify-center">
+                        <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                        </svg>
+                    </div>
+                    <span class="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                        BlogCraft Pro
+                    </span>
+                </div>
+                <nav class="hidden md:flex gap-8 text-sm font-medium">
+                    <a href="index.html" class="text-blue-600 font-semibold">Home</a>
+                    <a href="create.html" class="text-gray-700 hover:text-blue-600 transition-colors duration-200">Simple Editor</a>
+                    <a href="advanced-editor.html" class="text-gray-700 hover:text-blue-600 transition-colors duration-200">Advanced Editor</a>
+                    <a href="drafts.html" class="text-gray-700 hover:text-blue-600 transition-colors duration-200">Drafts</a>
+                    <a href="dashboard.html" class="text-gray-700 hover:text-blue-600 transition-colors duration-200">Dashboard</a>
+                    <a href="posts.html" class="text-gray-700 hover:text-blue-600 transition-colors duration-200">All Posts</a>
+                </nav>
             </div>
-            <span class="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-              BlogCraft
-            </span>
-          </div>
-          <nav class="hidden md:flex gap-8 text-sm font-medium">
-            <a href="index.html" class="text-gray-700 hover:text-blue-600 transition-colors duration-200">Home</a>
-            <a href="create.html" class="text-gray-700 hover:text-blue-600 transition-colors duration-200">Create Post</a>
-            <a href="drafts.html" class="text-gray-700 hover:text-blue-600 transition-colors duration-200">Drafts</a>
-            <a href="dashboard.html" class="text-gray-700 hover:text-blue-600 transition-colors duration-200">Dashboard</a>
-            <a href="posts.html" class="text-gray-700 hover:text-blue-600 transition-colors duration-200">All Posts</a>
-            <a href="review.html" class="text-gray-700 hover:text-blue-600 transition-colors duration-200">Review Panel</a>
-            <a href="monitor.html" class="text-gray-700 hover:text-blue-600 transition-colors duration-200">Monitor</a>
-            <a href="api-docs.html" class="text-gray-700 hover:text-blue-600 transition-colors duration-200">API Docs</a>
-          </nav>
-          <div class="md:hidden">
-            <button class="text-gray-700">
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-              </svg>
-            </button>
-          </div>
         </div>
-      </div>
     </header>
 
     <!-- Hero Section -->
-    <main class="max-w-7xl mx-auto px-6 py-16">
-      <div class="text-center mb-16">
-        <h1 class="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-gray-900 via-blue-800 to-purple-800 bg-clip-text text-transparent">
-          Welcome to BlogCraft
-        </h1>
-        <p class="text-xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
-          A modern collaborative platform for writing, reviewing, and publishing blog posts across your organization.
-        </p>
-        <div class="flex justify-center gap-4">
-          <a href="create.html" class="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-xl font-semibold hover:shadow-lg transition-all duration-200 transform hover:scale-105">
-            Start Writing
-          </a>
-          <a href="posts.html" class="border-2 border-gray-300 text-gray-700 px-8 py-4 rounded-xl font-semibold hover:border-blue-600 hover:text-blue-600 transition-all duration-200">
-            View Posts
-          </a>
+    <section class="gradient-bg text-white py-20">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <h1 class="text-5xl md:text-6xl font-bold mb-6">
+                Create Amazing Blog Posts
+            </h1>
+            <p class="text-xl md:text-2xl text-blue-100 mb-8 max-w-3xl mx-auto">
+                Professional blog editor with advanced features, media support, and seamless publishing workflow
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="advanced-editor.html" class="bg-white text-blue-600 px-8 py-4 rounded-xl font-semibold text-lg hover:bg-gray-100 transition-all duration-200 flex items-center justify-center gap-2">
+                    <i class="fas fa-rocket"></i>
+                    Start Writing
+                </a>
+                <a href="create.html" class="bg-blue-600/20 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-blue-600/30 transition-all duration-200 flex items-center justify-center gap-2">
+                    <i class="fas fa-edit"></i>
+                    Simple Editor
+                </a>
+            </div>
         </div>
-      </div>
+    </section>
 
-      <!-- Feature Cards -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
-        <a href="create.html" class="group">
-          <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 card-hover group-hover:shadow-xl">
-            <div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-blue-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-200">
-              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
-              </svg>
+    <!-- Features Section -->
+    <section class="py-20">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">Professional Blog Editor Features</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Everything you need to create, edit, and publish stunning blog posts
+                </p>
             </div>
-            <h3 class="text-xl font-semibold text-gray-900 mb-3">Create Blog Post</h3>
-            <p class="text-gray-600 leading-relaxed">
-              Create and save blog drafts. Submit them for review and collaborate with co-authors.
-            </p>
-          </div>
-        </a>
 
-        <a href="drafts.html" class="group">
-          <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 card-hover group-hover:shadow-xl">
-            <div class="w-12 h-12 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-200">
-              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
-              </svg>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Rich Text Editor -->
+                <div class="feature-card bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
+                    <div class="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-edit text-3xl text-blue-600"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4">Rich Text Editor</h3>
+                    <p class="text-gray-600 mb-4">
+                        Professional WYSIWYG editor with formatting tools, headers, lists, and more
+                    </p>
+                    <ul class="text-sm text-gray-500 space-y-1">
+                        <li>• Text formatting & styling</li>
+                        <li>• Headers & subheaders</li>
+                        <li>• Lists & indentation</li>
+                        <li>• Blockquotes & code blocks</li>
+                    </ul>
+                </div>
+
+                <!-- Media Management -->
+                <div class="feature-card bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
+                    <div class="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-images text-3xl text-green-600"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4">Media Management</h3>
+                    <p class="text-gray-600 mb-4">
+                        Upload and manage images, videos, and documents with ease
+                    </p>
+                    <ul class="text-sm text-gray-500 space-y-1">
+                        <li>• Image & video uploads</li>
+                        <li>• Automatic thumbnails</li>
+                        <li>• File organization</li>
+                        <li>• Alt text & captions</li>
+                    </ul>
+                </div>
+
+                <!-- SEO Tools -->
+                <div class="feature-card bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
+                    <div class="w-16 h-16 bg-purple-100 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-search text-3xl text-purple-600"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4">SEO Optimization</h3>
+                    <p class="text-gray-600 mb-4">
+                        Built-in SEO tools to help your content rank better
+                    </p>
+                    <ul class="text-sm text-gray-500 space-y-1">
+                        <li>• Meta title & description</li>
+                        <li>• Keyword optimization</li>
+                        <li>• Reading time calculator</li>
+                        <li>• Word count tracking</li>
+                    </ul>
+                </div>
+
+                <!-- Publishing Workflow -->
+                <div class="feature-card bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
+                    <div class="w-16 h-16 bg-orange-100 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-share-alt text-3xl text-orange-600"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4">Publishing Workflow</h3>
+                    <p class="text-gray-600 mb-4">
+                        Streamlined process from draft to published content
+                    </p>
+                    <ul class="text-sm text-gray-500 space-y-1">
+                        <li>• Draft management</li>
+                        <li>• Review & approval</li>
+                        <li>• Status tracking</li>
+                        <li>• Version control</li>
+                    </ul>
+                </div>
+
+                <!-- Collaboration -->
+                <div class="feature-card bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
+                    <div class="w-16 h-16 bg-red-100 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-users text-3xl text-red-600"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4">Team Collaboration</h3>
+                    <p class="text-gray-600 mb-4">
+                        Work together with authors, reviewers, and editors
+                    </p>
+                    <ul class="text-sm text-gray-500 space-y-1">
+                        <li>• Multi-user roles</li>
+                        <li>• Comment system</li>
+                        <li>• Review workflow</li>
+                        <li>• Activity tracking</li>
+                    </ul>
+                </div>
+
+                <!-- Analytics -->
+                <div class="feature-card bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
+                    <div class="w-16 h-16 bg-indigo-100 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-chart-line text-3xl text-indigo-600"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4">Content Analytics</h3>
+                    <p class="text-gray-600 mb-4">
+                        Track performance and engagement metrics
+                    </p>
+                    <ul class="text-sm text-gray-500 space-y-1">
+                        <li>• Post statistics</li>
+                        <li>• Performance metrics</li>
+                        <li>• Engagement tracking</li>
+                        <li>• Dashboard insights</li>
+                    </ul>
+                </div>
             </div>
-            <h3 class="text-xl font-semibold text-gray-900 mb-3">Manage Drafts</h3>
-            <p class="text-gray-600 leading-relaxed">
-              View and manage your draft blog posts. Edit, delete, or send them for review.
-            </p>
-          </div>
-        </a>
-
-        <a href="posts.html" class="group">
-          <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 card-hover group-hover:shadow-xl">
-            <div class="w-12 h-12 bg-gradient-to-r from-green-500 to-emerald-500 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-200">
-              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"/>
-              </svg>
-            </div>
-            <h3 class="text-xl font-semibold text-gray-900 mb-3">All Posts</h3>
-            <p class="text-gray-600 leading-relaxed">
-              View, update status, track history, and comment on all submitted blog posts.
-            </p>
-          </div>
-        </a>
-
-        <a href="dashboard.html" class="group">
-          <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 card-hover group-hover:shadow-xl">
-            <div class="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-200">
-              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
-              </svg>
-            </div>
-            <h3 class="text-xl font-semibold text-gray-900 mb-3">Dashboard</h3>
-            <p class="text-gray-600 leading-relaxed">
-              Monitor engagement metrics, views, and status of all published content.
-            </p>
-          </div>
-        </a>
-      </div>
-
-      <!-- Stats Section -->
-      <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
-        <h2 class="text-2xl font-bold text-gray-900 mb-6 text-center">Platform Overview</h2>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-          <div class="text-center">
-            <div class="text-3xl font-bold text-blue-600 mb-2">50+</div>
-            <div class="text-gray-600">Posts Created</div>
-          </div>
-          <div class="text-center">
-            <div class="text-3xl font-bold text-green-600 mb-2">30+</div>
-            <div class="text-gray-600">Published</div>
-          </div>
-          <div class="text-center">
-            <div class="text-3xl font-bold text-yellow-600 mb-2">15+</div>
-            <div class="text-gray-600">In Review</div>
-          </div>
-          <div class="text-center">
-            <div class="text-3xl font-bold text-purple-600 mb-2">10+</div>
-            <div class="text-gray-600">Authors</div>
-          </div>
         </div>
-      </div>
-    </main>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="bg-gray-900 text-white py-20">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h2 class="text-4xl font-bold mb-6">Ready to Start Writing?</h2>
+            <p class="text-xl text-gray-300 mb-8">
+                Join thousands of bloggers who trust BlogCraft for their content creation needs
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="advanced-editor.html" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-200 flex items-center justify-center gap-2">
+                    <i class="fas fa-rocket"></i>
+                    Get Started Now
+                </a>
+                <a href="posts.html" class="bg-gray-700 hover:bg-gray-600 text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-200 flex items-center justify-center gap-2">
+                    <i class="fas fa-eye"></i>
+                    View Examples
+                </a>
+            </div>
+        </div>
+    </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-12 mt-20">
-      <div class="max-w-7xl mx-auto px-6 text-center">
-        <div class="flex items-center justify-center gap-3 mb-4">
-          <div class="w-8 h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
-            <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-            </svg>
-          </div>
-          <span class="text-xl font-bold">BlogCraft</span>
+    <footer class="bg-white border-t border-gray-200 py-12">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-8 h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
+                            <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                            </svg>
+                        </div>
+                        <span class="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                            BlogCraft
+                        </span>
+                    </div>
+                    <p class="text-gray-600">
+                        Professional blog publishing platform for content creators and teams.
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold text-gray-900 mb-4">Features</h4>
+                    <ul class="space-y-2 text-gray-600">
+                        <li><a href="advanced-editor.html" class="hover:text-blue-600">Advanced Editor</a></li>
+                        <li><a href="create.html" class="hover:text-blue-600">Simple Editor</a></li>
+                        <li><a href="dashboard.html" class="hover:text-blue-600">Dashboard</a></li>
+                        <li><a href="posts.html" class="hover:text-blue-600">All Posts</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold text-gray-900 mb-4">Support</h4>
+                    <ul class="space-y-2 text-gray-600">
+                        <li><a href="#" class="hover:text-blue-600">Documentation</a></li>
+                        <li><a href="#" class="hover:text-blue-600">Help Center</a></li>
+                        <li><a href="#" class="hover:text-blue-600">Contact Us</a></li>
+                        <li><a href="#" class="hover:text-blue-600">Community</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold text-gray-900 mb-4">Company</h4>
+                    <ul class="space-y-2 text-gray-600">
+                        <li><a href="#" class="hover:text-blue-600">About</a></li>
+                        <li><a href="#" class="hover:text-blue-600">Blog</a></li>
+                        <li><a href="#" class="hover:text-blue-600">Careers</a></li>
+                        <li><a href="#" class="hover:text-blue-600">Privacy</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-200 mt-8 pt-8 text-center text-gray-600">
+                <p>&copy; 2024 BlogCraft. All rights reserved. Built with ❤️ by Sasken Team.</p>
+            </div>
         </div>
-        <p class="text-gray-400 mb-6">Empowering teams to create, collaborate, and publish amazing content.</p>
-        <div class="flex justify-center gap-6 text-sm text-gray-400">
-          <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
-          <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
-          <a href="#" class="hover:text-white transition-colors">Contact</a>
-        </div>
-      </div>
     </footer>
-  </body>
+</body>
 </html>

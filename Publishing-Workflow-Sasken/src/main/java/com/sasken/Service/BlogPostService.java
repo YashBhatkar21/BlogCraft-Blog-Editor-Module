@@ -22,6 +22,10 @@ public class BlogPostService {
         post.setStatus(PostStatus.DRAFT);
         post.setCreatedAt(LocalDateTime.now());
         post.setUpdatedAt(LocalDateTime.now());
+        // Ensure authorName is not null
+        if (post.getAuthorName() == null || post.getAuthorName().trim().isEmpty()) {
+            post.setAuthorName("Anonymous");
+        }
         return blogPostRepo.save(post);
     }
 
@@ -66,6 +70,10 @@ public class BlogPostService {
 
     existing.setTitle(updatedPost.getTitle());
     existing.setContent(updatedPost.getContent());
+    // Update author name if provided
+    if (updatedPost.getAuthorName() != null && !updatedPost.getAuthorName().trim().isEmpty()) {
+        existing.setAuthorName(updatedPost.getAuthorName());
+    }
     existing.setUpdatedAt(LocalDateTime.now());
 
     return blogPostRepo.save(existing);

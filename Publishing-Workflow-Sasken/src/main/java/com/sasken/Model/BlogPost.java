@@ -1,6 +1,7 @@
 package com.sasken.Model;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -9,6 +10,8 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Transient;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -28,8 +31,11 @@ public class BlogPost {
 
     private String title;
 
-    @Column(length = 5000)
+    @Column(length = 10000)
     private String content;
+
+    @Column(length = 10000)
+    private String richContent; // HTML content with media
 
     @Enumerated(EnumType.STRING)
     private PostStatus status;
@@ -38,4 +44,14 @@ public class BlogPost {
     private LocalDateTime updatedAt;
 
     private Long authorId;
+    private String authorName; // Added author name field
+    
+    @OneToMany(mappedBy = "blogPost")
+    private List<Media> media;
+    
+    @Transient
+    private String featuredImageUrl;
+    
+    @Transient
+    private String excerpt; // Generated excerpt from content
 }

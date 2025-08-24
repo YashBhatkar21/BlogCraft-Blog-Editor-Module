@@ -41,6 +41,7 @@ async function loadPosts() {
 
     div.innerHTML = `
       <h2>${post.title} (${post.status})</h2>
+      <p><strong>Author:</strong> ${post.authorName || 'Unknown'}</p>
       <p>${post.content}</p>
       <button onclick="showHistory(${post.id})">🕓 View History</button>
       <button onclick="showComments(${post.id})">💬 View Comments</button>
@@ -124,6 +125,7 @@ async function addComment(postId) {
 async function createPost() {
   const title = document.getElementById("newTitle").value.trim();
   const content = document.getElementById("newContent").value.trim();
+  const authorName = document.getElementById("newAuthorName")?.value.trim() || "Anonymous";
 
   if (!title || !content) return alert("Please fill out both fields.");
   if (!currentUser.id || !currentUser.role)
@@ -132,21 +134,27 @@ async function createPost() {
   const post = {
     title,
     content,
-    authorId: currentUser.id, // ✅ This is required!
+    authorId: currentUser.id,
+    authorName: authorName
   };
 
-  const res = await fetch(`${API_BASE}`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(post),
-  });
+  try {
+    const res = await fetch(`${API_BASE}`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(post),
+    });
 
-  if (res.ok) {
-    alert("Post saved!");
-    window.location.href = "index.html"; // Or loadPosts()
-  } else {
-    const msg = await res.text();
-    alert("❌ Failed to save post: " + msg);
+    if (res.ok) {
+      alert("Post saved!");
+      window.location.href = "index.html"; // Or loadPosts()
+    } else {
+      const msg = await res.text();
+      alert("❌ Failed to save post: " + msg);
+    }
+  } catch (error) {
+    console.error("Error:", error);
+    alert("❌ An error occurred while saving the post.");
   }
 }
 

@@ -55,7 +55,8 @@ public class BlogPostController {
                       "status": "DRAFT",
                       "createdAt": "2024-01-15T10:30:00",
                       "updatedAt": "2024-01-15T10:30:00",
-                      "authorId": 1
+                      "authorId": 1,
+                      "authorName": "John Doe"
                     }
                     """))),
         @ApiResponse(responseCode = "400", description = "Invalid input data"),
@@ -65,7 +66,12 @@ public class BlogPostController {
         @Parameter(description = "Blog post object to create", required = true)
         @RequestBody BlogPost post
     ) {
-        return ResponseEntity.ok(service.createDraft(post));
+        try {
+            BlogPost createdPost = service.createDraft(post);
+            return ResponseEntity.ok(createdPost);
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().build();
+        }
     }
 
     @PutMapping("/{postId}/status")
